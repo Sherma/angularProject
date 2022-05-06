@@ -26,16 +26,16 @@
     </ul>
   </div>
   Можливості гри:
-  <form>
+  <form (submit)="addOpt(option.value)">
     <div class="form-group">
 <label for="option">Додання нової можливості</label>
-<input type="text" id="option" placeholder="Введіть нову можливість" class="form-control">
-<button type="button" class="btn btn-outline-success">Додати</button>
+<input type="text" id="option" placeholder="Введіть нову можливість" class="form-control" #option>
+<button type="submit" class="btn btn-outline-success">Додати</button>
     </div>
   </form>
   <div class="alert alert-warning">
     <ul>
-      <li *ngFor="let opt of options">{{ opt }}</li>
+      <li *ngFor="let opt of options">{{ opt }} <button class="btn btn-warning btn-sm" (click)="deleteOpt(opt)">X</button> </li>
     </ul>
   </div>
   Виберіть гру:

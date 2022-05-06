@@ -11,7 +11,7 @@ export class GameComponent implements OnInit {
     price:number = 600;
     version:string = '2.35.1';
     game_type!: Game_type;
-    options:string[] | undefined;
+    options!: string[];
 
   constructor() { }
 
@@ -64,6 +64,23 @@ this.options = ["Top 1 online","Tournaments","Cybersport"];
       }
 
 
+  }
+
+  addOpt(option:string)
+  {
+this.options?.unshift(option);
+return false;
+  }
+
+  deleteOpt(option:string){
+    for(let i = 0; i < this.options?.length; i++)
+    {
+      if(this.options[i] == option)
+      {
+        this.options?.splice(i, 1);
+        break;
+      }
+    }
   }
 
 }
