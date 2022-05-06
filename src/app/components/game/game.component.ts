@@ -5,39 +5,40 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.css']
 })
-export class GameComponent implements OnInit {
 
+export class GameComponent implements OnInit {
     name:string = 'Counter-Strike';
     price:number = 600;
     version:string = '2.35.1';
     game_type!: Game_type;
     options!: string[];
+    isEdit:boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {
-
-this.game_type = {
+  this.game_type = {
   ftype : 'Shouter',
   stype : '3d-Action',
   ttype : 'Simulator'
-};
-this.options = ["Top 1 online","Tournaments","Cybersport"];
+  };
+  this.options = ["Top 1 online","Tournaments","Cybersport"];
   }
 
   gameSelect(gameName:string){
     if(gameName=='cs')
     {
-    this.name = 'Counter-Strike';
-    this.price = 600;
-    this.version = '2.35.1';
-    this.game_type = {
+      this.name = 'Counter-Strike';
+      this.price = 600;
+      this.version = '2.35.1';
+      this.game_type = {
       ftype : 'Shouter',
       stype : '3d-Action',
       ttype : 'Simulator'
-    };
-    this.options = ["Top 1 online","Tournaments","Cybersport"];
+      };
+      this.options = ["Top 1 online","Tournaments","Cybersport"];
       }
+
       else if (gameName == 'dota')
       {
         this.name = 'Dota 2';
@@ -50,6 +51,7 @@ this.options = ["Top 1 online","Tournaments","Cybersport"];
         };
         this.options = ["Top 2 online","Tournaments","Cybersport"];
       }
+
       else
       {
         this.name = 'Fortnite';
@@ -62,14 +64,12 @@ this.options = ["Top 1 online","Tournaments","Cybersport"];
         };
         this.options = ["Top 5 online","Tournaments","Cybersport"];
       }
-
-
   }
 
   addOpt(option:string)
   {
-this.options?.unshift(option);
-return false;
+    this.options?.unshift(option);
+    return false;
   }
 
   deleteOpt(option:string){
@@ -83,6 +83,10 @@ return false;
     }
   }
 
+  showEdit() {
+    this.isEdit = !this.isEdit;
+
+  }
 }
 
 
@@ -92,3 +96,7 @@ interface Game_type{
   stype: string;
   ttype: string;
 }
+function showEdit() {
+  throw new Error('Function not implemented.');
+}
+

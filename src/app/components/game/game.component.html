@@ -4,6 +4,7 @@
     <mark>Гра:</mark>{{ name }}
     <small>{{ version }}</small>
   </h3>
+
   <div class="alert alert-success">
     Властивості:
     <ul>
@@ -25,19 +26,46 @@
       </li>
     </ul>
   </div>
-  Можливості гри:
-  <form (submit)="addOpt(option.value)">
+
+  Редагування даних гри:
+  <button class="btn btn-danger" (click)="showEdit()">Редагувати</button> <br>
+  <form *ngIf=isEdit>
     <div class="form-group">
-<label for="option">Додання нової можливості</label>
-<input type="text" id="option" placeholder="Введіть нову можливість" class="form-control" #option>
-<button type="submit" class="btn btn-outline-success">Додати</button>
+      <input type="text" placeholder="Введіть нову назву" class="form-control" [(ngModel)]="name" name="name"/><br>
+      <input type="text" placeholder="Введіть нову версію" class="form-control" [(ngModel)]="version" name="version"/><br>
+      <input type="number" placeholder="Введіть нову ціну" class="form-control" [(ngModel)]="price" name="price"/><br>
+      <input type="text" placeholder="Введіть новий клас гри" class="form-control" [(ngModel)]="game_type.ftype" name="ftype"/><br>
+      <input type="text" placeholder="Введіть новий клас гри" class="form-control" [(ngModel)]="game_type.stype" name="stype"/><br>
+      <input type="text" placeholder="Введіть новий клас гри" class="form-control" [(ngModel)]="game_type.ttype" name="ttype"/><br>
     </div>
   </form>
+
+  <form (submit)="addOpt(option.value)">
+    <div class="form-group">
+      <label for="option">Додання нової можливості</label>
+      <input
+        type="text"
+        id="option"
+        placeholder="Введіть нову можливість"
+        class="form-control"
+        #option
+      />
+      <button type="submit" class="btn btn-outline-success">Додати</button>
+    </div>
+  </form>
+
+  Можливості гри:
   <div class="alert alert-warning">
     <ul>
-      <li *ngFor="let opt of options">{{ opt }} <button class="btn btn-warning btn-sm" (click)="deleteOpt(opt)">X</button> </li>
+      <li *ngFor="let opt of options">
+        {{ opt }}
+        <button class="btn btn-warning btn-sm" (click)="deleteOpt(opt)">
+          X
+        </button>
+      </li>
     </ul>
   </div>
+
   Виберіть гру:
   <br />
   <button class="btn btn-danger" (click)="gameSelect('cs')">
