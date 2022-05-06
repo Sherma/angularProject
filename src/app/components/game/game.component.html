@@ -1,1 +1,50 @@
-<p>game works!</p>
+<div class="container">
+  <br />
+  <h3>
+    <mark>Гра:</mark>{{ name }}
+    <small>{{ version }}</small>
+  </h3>
+  <div class="alert alert-success">
+    Властивості:
+    <ul>
+      <li>
+        Ціна: <strong>{{ price }}</strong
+        >грн
+      </li>
+    </ul>
+    Класи гри:
+    <ul>
+      <li>
+        <strong>{{ game_type.ftype }}</strong>
+      </li>
+      <li>
+        <strong>{{ game_type.stype }}</strong>
+      </li>
+      <li>
+        <strong>{{ game_type.ttype }}</strong>
+      </li>
+    </ul>
+  </div>
+  Можливості гри:
+  <form>
+    <div class="form-group">
+<label for="option">Додання нової можливості</label>
+<input type="text" id="option" placeholder="Введіть нову можливість" class="form-control">
+<button type="button" class="btn btn-outline-success">Додати</button>
+    </div>
+  </form>
+  <div class="alert alert-warning">
+    <ul>
+      <li *ngFor="let opt of options">{{ opt }}</li>
+    </ul>
+  </div>
+  Виберіть гру:
+  <br />
+  <button class="btn btn-danger" (click)="gameSelect('cs')">
+    Counter-Strike
+  </button>
+  <button class="btn btn-success" (click)="gameSelect('dota')">Dota 2</button>
+  <button class="btn btn-info" (click)="gameSelect('fortnite')">
+    Fortnite
+  </button>
+</div>
